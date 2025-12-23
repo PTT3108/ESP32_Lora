@@ -46,7 +46,10 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "thread": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "unordered_set": "cpp",
+        "format": "cpp",
+        "text_encoding": "cpp"
     },
     "python.autoComplete.extraPaths": [
         "${workspaceFolder}/sources/poky/bitbake/lib",

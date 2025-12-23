@@ -39,6 +39,14 @@
             "platform": "esp32",
             "product_name": "ESP32 General Module",
             "lua_name": "ESP32_LUA_BASE"
+        },
+                {
+            "name": "ESP32s3-GATEWAY-2.0",
+            "version": "2.0.0",
+            "part": "ESP32S3-2400-v2.0.json",
+            "platform": "esp32",
+            "product_name": "ESP32 General Module",
+            "lua_name": "ESP32_LUA_BASE"
         }
     ]
 }

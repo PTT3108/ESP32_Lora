@@ -95,6 +95,9 @@ String Led::ledBlink()
     }
     return "Led Blink";
 }
+void setPWM(){
+
+}
 
 String Led::getJSON(DataMessage *message)
 {
@@ -142,7 +145,7 @@ DataMessage *Led::getLedMessage(LedCommand command, uint16_t dst)
 
 void Led::processReceivedMessage(messagePort port, DataMessage *message)
 {
-    LedMessage *ledMessage = (LedMessage *)message;
+    PWMCommandMessage *ledMessage = (PWMCommandMessage *)message;
 
     switch (ledMessage->ledCommand)
     {
@@ -156,6 +159,9 @@ void Led::processReceivedMessage(messagePort port, DataMessage *message)
         DBGLN("Status : %d",state);
         sendstatus();
         break;
+    case LedCommand::reciver:
+        DBGLN("Staus: pin-%d,duty-%d,frequency:%d",ledMessage->pin,ledMessage->duty,ledMessage->frequency);
+        pwm.set_pwm(ledMessage->pin,ledMessage->duty,ledMessage->frequency);
     default:
         break;
     }

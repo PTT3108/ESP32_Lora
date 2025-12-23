@@ -47,13 +47,9 @@ bool LoRaMeshService::initLoraMesherService()
     // Initialize LoRaMesher
     // radio.begin(config);
     // radio.radio->getRSSI(GPIO_PIN_RX_ENABLE,GPIO_PIN_TX_ENABLE);
-    radio.radio->setRfSwitchPins(GPIO_PIN_RX_ENABLE,GPIO_PIN_TX_ENABLE);
-    if (radio.begin(config) != 0)
-    {
-
-        ESP_LOGW(LMS_TAG, "Failed to initialize LoRaMesher radio. Retrying...");
-        return 0;
-    }
+    // radio.radio->setRfSwitchPins(GPIO_PIN_RX_ENABLE,GPIO_PIN_TX_ENABLE);
+    // radio.radio->setRfSwitchPins(GPIO_PIN_RX_ENABLE, GPIO_PIN_TX_ENABLE);
+    radio.begin(config);
 
     // Create the receive task and add it to the LoRaMesher
     createReceiveMessages();
@@ -78,7 +74,7 @@ void LoRaMeshService::loopReceivedPackets()
 
         // Get the first element inside the Received User Packets FiFo
         AppPacket<LoRaMeshMessage> *packet = radio.getNextAppPacket<LoRaMeshMessage>();
-        DBGLN("Reciver Lora: %c",packet->payload->dataMessage);
+        DBGLN("Reciver Lora: %c", packet->payload->dataMessage);
         // Create a DataMessage from the received packet
         DataMessage *message = createDataMessage(packet);
 

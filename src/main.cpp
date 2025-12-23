@@ -37,7 +37,8 @@ device_affinity_t devices[] = {
     {&MQTT_device, 0},
 #endif
     {&Sensor_dev, 0},
-    {&Send_message, 0}};
+    {&Send_message, 0}
+    };
 
 Stream *NodeUSB;
 Stream *NodeBackpack;
@@ -266,7 +267,7 @@ void setup()
 
     devicesStart();
     initLed();
-    pwm.exWrite(135,1);
+    // pwm.exWrite(135,1);
 }
 
 #include "WiFi.h"
